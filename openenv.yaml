@@ -1,0 +1,52 @@
+name: supply-chain-optimizer
+version: "1.0.0"
+description: >
+  A real-world supply chain management environment where an AI agent learns
+  to optimize inventory replenishment, routing, and demand forecasting
+  for a multi-warehouse distribution network.
+author: piyush290106
+license: MIT
+
+tasks:
+  - id: inventory_reorder
+    name: Inventory Reorder Decision
+    difficulty: easy
+    description: >
+      Given current stock levels and demand history, decide which SKUs
+      to reorder and in what quantities to minimize stockout cost while
+      keeping holding costs low.
+    reward_range: [0.0, 1.0]
+
+  - id: route_optimization
+    name: Last-Mile Delivery Route Optimization
+    difficulty: medium
+    description: >
+      Assign delivery orders to vehicles and sequence stops to minimize
+      total distance traveled while meeting all time-window constraints.
+    reward_range: [0.0, 1.0]
+
+  - id: demand_forecast_allocation
+    name: Multi-Warehouse Demand Forecast & Allocation
+    difficulty: hard
+    description: >
+      Forecast next-week demand per SKU per region, then allocate limited
+      central stock across warehouses to maximize service level while
+      minimizing inter-warehouse transfers.
+    reward_range: [0.0, 1.0]
+
+observation_space:
+  type: dict
+  description: Typed structured observations per task (see models.py)
+
+action_space:
+  type: dict
+  description: Typed structured actions per task (see models.py)
+
+endpoints:
+  reset: POST /reset
+  step:  POST /step
+  state: GET  /state
+
+docker:
+  image: supply-chain-openenv
+  port: 8000

@@ -1,0 +1,9 @@
+{
+  "seed": 42,
+  "scores": {
+    "inventory_reorder": 0.83646,
+    "route_optimization": 1.0,
+    "demand_forecast_allocation": 0.92195
+  },
+  "overall": 0.91947
+}
